@@ -15,7 +15,7 @@ const LoginForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'http://localhost:8000/auth/users/tokens';
+    const url = 'https://fastapi-dxik.onrender.com/auth/users/tokens';
     const payload = new URLSearchParams();
     payload.append('grant_type', 'password');
     payload.append('username', username);
