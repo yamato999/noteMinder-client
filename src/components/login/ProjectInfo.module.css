@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Press+Start+2P&display=swap');
+
+
+.background-project{
+    background: var(--blue, linear-gradient(180deg, #0575E6 0%, #02298A 84.79%, #021B79 100%));
+    width:58%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 8%;
+    padding-bottom:50px;
+}
+
+.background-project h1{
+    color: var(--white, #FFF);
+font-family: Poppins;
+font-size: 40px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+.background-project p{
+    color: var(--white, #FFF);
+font-family: Poppins;
+font-size: 18px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}
