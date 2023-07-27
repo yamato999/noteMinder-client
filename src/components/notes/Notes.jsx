@@ -22,7 +22,7 @@ const Notes = () => {
     const getNotes = async () => {
         try {
           const token = localStorage.getItem('token');; // Здесь нужно указать ваш JWT токен
-          const response = await fetch('http://localhost:8000/notes/all', {
+          const response = await fetch('https://fastapi-dxik.onrender.com/notes/all', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
