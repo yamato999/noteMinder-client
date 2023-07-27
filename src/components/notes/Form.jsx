@@ -40,7 +40,7 @@ const Form = ({setNote}) => {
     const token = localStorage.getItem('token');
     const sendDescriptionToServer = async (description) => {
         try {
-          const response = await fetch('https://fastapi-dxik.onrender.com/notes/', {
+          const response = await fetch('https://fastapi-ian5.onrender.com/notes/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
