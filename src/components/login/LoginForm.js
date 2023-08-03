@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import classes from './LoginForm.module.css';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -65,6 +65,7 @@ const LoginForm = () => {
             className=""
           />
           <button type="submit">Login</button>
+          <p>Don't have an account? <a onClick={props.toggleForm}> Create account</a></p>
         </form>
         <a></a>
       </div>

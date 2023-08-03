@@ -35,7 +35,8 @@ justify-content: center;
 align-items: center;
 gap: 10px;
 border-radius: 30px;
-background: #0575E6;
+background: var(--blue, linear-gradient(180deg, #1f5766 0%, #236c7e 50%, #2c768f 100%));
+
 color: #FFF;
 font-family: Poppins;
 font-size: 14px;

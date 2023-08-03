@@ -8,13 +8,15 @@ import Notes from './notes/Notes';
 import Archives from './archives/Archives';
 import DeleteNotes from './delete/DeleteNotes';
 import Login from './login/LoginPage';
+import LandingPage from './landing/LandingPage'
 
 const Home = () => {
     return (
       <div>
         <Router>
           <Routes>
-            <Route path='/' element={<Login />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/landing' element={<LandingPage />} />
             <Route
               path='/*' // Маршрут для всех остальных путей
               element={

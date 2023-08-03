@@ -2,7 +2,8 @@
 
 
 .background-project{
-    background: var(--blue, linear-gradient(180deg, #0575E6 0%, #02298A 84.79%, #021B79 100%));
+    background: var(--blue, linear-gradient(180deg, #1f5766 0%, #236c7e 50%, #2c768f 100%));
+
     width:58%;
     height:100vh;
     display: flex;
