@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./TagsInput.css"
 
+const token = localStorage.getItem('token');
 const TagsInput = ({ values, onChange, color }) => {
     const [tag, setTag] = useState('')
     const [tags, setTags] = useState(values)
@@ -14,7 +15,8 @@ const TagsInput = ({ values, onChange, color }) => {
           const response = await fetch('https://fastapi-ian5.onrender.com/notes/values/', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(tags)
           });
