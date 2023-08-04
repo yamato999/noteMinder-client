@@ -25,8 +25,6 @@ const Home = () => {
                   <Routes>
                     
                     <Route path='/notes' element={<Notes />} />
-                    <Route path='/archive' element={<Archives />} />
-                    <Route path='/delete' element={<DeleteNotes />} />
                   </Routes>
                 </Box>
               }

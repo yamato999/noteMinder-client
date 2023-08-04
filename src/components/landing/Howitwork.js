@@ -7,19 +7,16 @@ const Howitwork = () => {
             <h2>How It Works</h2>
             <div className='flex'>
                 <div>
-                    <span className='fas fa-home'></span>
-                    <h4>Find a Property</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h4>Write a note</h4>
+                    <p>Write down your thoughts, ideas, and tasks in AI Notes to keep them organized and easily accessible</p>
                 </div>
                 <div>
-                    <span className='fas fa-dollar-sign'></span>
-                    <h4>But a Property</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h4>Recieve advices from AI</h4>
+                    <p>Experience the power of artificial intelligence as it analyzes your notes, providing personalized advice</p>
                 </div>
                 <div>
-                    <span className='fas fa-chart-line'></span>
-                    <h4>Investing</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <h4>Boost your organization</h4>
+                    <p>Effortlessly manage your notes and tasks, and witness a significant boost in productivity.</p>
                 </div>
             </div>
         </div>

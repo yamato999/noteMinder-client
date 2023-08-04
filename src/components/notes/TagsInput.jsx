@@ -11,7 +11,7 @@ const TagsInput = ({ values, onChange, color }) => {
 
     const sendDataToServer = async () => {
         try {
-          const response = await fetch('http://127.0.0.1:8000/values/', {
+          const response = await fetch('https://fastapi-ian5.onrender.com/notes/values/', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -34,6 +34,7 @@ const TagsInput = ({ values, onChange, color }) => {
     const handleChange = e => {
         const { value } = e.target
         setTag(value)
+
         
         
     }
@@ -47,11 +48,12 @@ const TagsInput = ({ values, onChange, color }) => {
             setTags(prevTags => {
                 const latesTags = [...prevTags, newTag]
                 onChange(latesTags)
-                
+                sendDataToServer()
                 return latesTags
                 
             });
             setTag('')
+            
         } else if (key === 'Backspace' && !newTag.length && tags.length) {
             e.preventDefault()
 

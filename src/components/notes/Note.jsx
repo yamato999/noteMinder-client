@@ -13,7 +13,8 @@ const StyledCard = styled(Card)`
     margin: 8px;
     box-shadow: none;
 `
-
+const token = localStorage.getItem('token');
+console.log(token)
 const Note = ({ note, noteTitle }) => {
 
     const { notes, setNotes, setAcrchiveNotes, setDeleteNotes } = useContext(DataContext);
@@ -23,12 +24,31 @@ const Note = ({ note, noteTitle }) => {
         setNotes(updatedNotes);
         setAcrchiveNotes(prevArr => [note, ...prevArr]);
     }
-
-    const deleteNote = (note) => {
-        const updatedNotes = notes.filter(data => data.id !== note.id);
-        setNotes(updatedNotes);
-        setDeleteNotes(prevArr => [note, ...prevArr]);
-    }
+    
+    const deleteNote = async (note_id) => {
+        try {
+          const response = await fetch(`https://fastapi-ian5.onrender.com/notes/${note_id}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            }
+          });
+      
+          if (response.ok) {
+            // Заметка успешно удалена на сервере
+            return response;
+          } else {
+            // Обработка ошибки, если заметка не была найдена
+            const data = await response.json();
+            throw new Error(data.detail);
+          }
+        } catch (error) {
+          console.error('Error:', error.message);
+          // Обработка других ошибок
+          throw error;
+        }
+      };
+      {console.log(note._id)}
 
     return (
         <StyledCard>
@@ -37,14 +57,11 @@ const Note = ({ note, noteTitle }) => {
                     <Typography>{note.description}</Typography>
                 </CardContent>
                 <CardActions>
-                    <Archive 
-                        fontSize="small" 
-                        style={{ marginLeft: 'auto' }} 
-                        onClick={() => archiveNote(note)}
-                    />
+
                     <Delete 
                         fontSize="small"
-                        onClick={() => deleteNote(note)}
+                        onClick={() => deleteNote(note._id)}
+                        
                     />
                 </CardActions>
         </StyledCard>

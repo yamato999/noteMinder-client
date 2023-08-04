@@ -44,7 +44,9 @@ const RegisterForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} className={classes.container}>
-      <h1>Sign up</h1>
+      
+      <div>
+        </div><h2>Sign up</h2>
       <div>
         <label></label>
         <input
@@ -69,7 +71,7 @@ const RegisterForm = (props) => {
       </div>
       
       <button type="submit">Create account</button>
-      <p>Already have an account? <a onClick={props.toggleForm}> Create account</a></p>
+      <p>Already have an account? <a onClick={props.toggleForm}>Sign In</a></p>
       {errorMessage && <p>{errorMessage}</p>}
     </form>
   );
