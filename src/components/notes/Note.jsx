@@ -54,7 +54,7 @@ const Note = ({ note, noteTitle }) => {
         <StyledCard>
                 <CardContent>
                 <Typography>{note.title}</Typography>
-                    <Typography>{note.description}</Typography>
+                    <Typography>{note.text}</Typography>
                 </CardContent>
                 <CardActions>
 
