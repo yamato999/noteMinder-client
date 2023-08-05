@@ -48,7 +48,6 @@ const Note = ({ note, noteTitle }) => {
           throw error;
         }
       };
-      {console.log(note._id)}
 
     return (
         <StyledCard>

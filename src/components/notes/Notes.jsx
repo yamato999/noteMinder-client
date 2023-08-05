@@ -36,7 +36,13 @@ const Notes = () => {
             const data = await response.json();
             // Обработка полученных заметок и отображение на странице
             console.log(data)
-            setNotes(data)
+            const transformedData = data.map(item => ({
+                ...item,
+                text: item.description,
+                description: undefined // Remove the "description" field from the object
+              }));
+            console.log(transformedData)
+            setNotes(transformedData)
           } else {
             throw new Error('Request failed');
           }

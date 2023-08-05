@@ -5,7 +5,7 @@ import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Typin
 
 const API_KEY = process.env.REACT_APP_API_KEY
 function ChatBot(props) {
-  const formattedNotes = props.notes.map(({ title, description }) => [title, description]);
+  const formattedNotes = props.notes.map(({ title, text }) => [title, text]);
 
   const [messages, setMessages] = useState([
     {
@@ -14,7 +14,9 @@ function ChatBot(props) {
       sender: "ChatGPT"
     }
   ]);
-  const customPrompt = `I have these notes in my notebook. ${formattedNotes}. And this is an array of our previous dialogue. ${messages}, where 0 element - message. And 1st element is sender. Now answer on my next question based on the context and our previous dialogue`;
+  console.log(formattedNotes)
+  console.log(messages)
+  const customPrompt = `I have these notes in my notebook. ${formattedNotes}. First element is title of note and second is description. Also there is an array of our previous dialogue. ${messages}, where 0 element - message. And 1st element is sender. Now answer on my next question in russian using given to you information`;
   const formattedMessages = messages.map((messageObject) => [messageObject.message, messageObject.sender]);
   console.log(formattedMessages)
   const systemMessage = {
@@ -96,7 +98,7 @@ function ChatBot(props) {
           <ChatContainer>       
             <MessageList 
               scrollBehavior="smooth" 
-              typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing" /> : null}
+              typingIndicator={isTyping ? <TypingIndicator content="Assistant is typing" /> : null}
             >
               {messages.map((message, i) => {
                 console.log(messages)
