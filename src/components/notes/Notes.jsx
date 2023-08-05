@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { Box, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { DragDropContext, Draggable, Droppable  } from 'react-beautiful-dnd';
-
+import {useEffect} from 'react'
 import { DataContext } from '../../context/DataProvider';
 import { reorder } from '../../utils/common-utils';
 
@@ -19,6 +19,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const Notes = () => {
+    const { notes, setNotes, tags } = useContext(DataContext);
+    const [noteTitle, setNoteTitle] = useState('');
     const getNotes = async () => {
         try {
           const token = localStorage.getItem('token');; // Здесь нужно указать ваш JWT токен
@@ -49,12 +51,13 @@ const Notes = () => {
       
 
 
-    const { notes, setNotes } = useContext(DataContext);
-    const [noteTitle, setNoteTitle] = useState('');
+
     function setNote(value) {
         setNoteTitle(value)
     }
-
+    useEffect(() => {
+        getNotes()
+      }, [tags]); // Зависимость от массива tags
     const onDragEnd = (result) => {
         if (!result.destination) 
           return;
@@ -67,7 +70,6 @@ const Notes = () => {
         <Box sx={{ display: 'flex', width: '100%' }}>
             <Box sx={{ p: 3, width: '100%' }}>
                 <DrawerHeader />
-                <TagsInput color="blue" values={[]} onChange={tags => console.log(tags)} />
                 <Form setNote={setNote}/>
                 
                 { notes.length > 0 ? 

@@ -35,7 +35,7 @@ const Note = ({ note, noteTitle }) => {
           });
       
           if (response.ok) {
-            // Заметка успешно удалена на сервере
+            setNotes((prevNotes) => prevNotes.filter((note) => note._id !== note_id));
             return response;
           } else {
             // Обработка ошибки, если заметка не была найдена

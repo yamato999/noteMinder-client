@@ -6,11 +6,11 @@ const TagsInput = ({ values, onChange, color }) => {
     const [tag, setTag] = useState('')
     const [tags, setTags] = useState(values)
 
-    /*useEffect(() => {
-        sendDataToServer();
-      }, [tags]); */
+    useEffect(() => {
+        sendDataToServer(tags);
+      }, [tags]); 
 
-    const sendDataToServer = async () => {
+    const sendDataToServer = async (tags) => {
         try {
           const response = await fetch('https://fastapi-ian5.onrender.com/notes/values/', {
             method: 'POST',
@@ -50,7 +50,6 @@ const TagsInput = ({ values, onChange, color }) => {
             setTags(prevTags => {
                 const latesTags = [...prevTags, newTag]
                 onChange(latesTags)
-                sendDataToServer()
                 return latesTags
                 
             });
