@@ -1,59 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Press+Start+2P&display=swap");
 
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width:44%
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 44%;
+  text-align: center;
 }
 
-.container h2{
-    color: #333;
-    font-family: Poppins;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+.container h2 {
+  color: #333;
+  font-family: Poppins;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
-.container p{
-    color: #333;
-    font-family: Poppins;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+.container p {
+  color: #333;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.container button{
-    display: flex;
-width: 307px;
-padding: 18px 26px;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 10px;
-border-radius: 30px;
-background: var(--blue, linear-gradient(180deg, #1f5766 0%, #236c7e 50%, #2c768f 100%));
+.container button {
+  margin-top: 1rem;
+  display: flex;
+  width: 307px;
+  padding: 18px 26px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 30px;
+  background: var(
+    --blue,
+    linear-gradient(180deg, #1f5766 0%, #236c7e 50%, #2c768f 100%)
+  );
 
-color: #FFF;
-font-family: Poppins;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.container input{
-    display: flex;
-width: 307px;
-padding: 18px 26px;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-gap: 10px;
-border-radius: 30px;
-border: 1px solid #EEE;
-background: #FFF;
+.container input {
+  display: flex;
+  width: 307px;
+  padding: 18px 26px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 30px;
+  border: 1px solid #eee;
+  background: #fff;
+}
+
+.accountAction {
+  cursor: pointer;
+  color: #0e9e9a;
+}
+
+.registerInputs {
+  padding-bottom: 1rem;
 }

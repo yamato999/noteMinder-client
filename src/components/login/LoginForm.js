@@ -1,9 +1,12 @@
-import { useState } from 'react';
-import classes from './LoginForm.module.css';
+import { useState } from "react";
+import classes from "./LoginForm.module.css";
+import { Hourglass } from "react-loader-spinner";
 
 const LoginForm = (props) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -15,30 +18,36 @@ const LoginForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const url = 'https://fastapi-ian5.onrender.com/auth/users/tokens';
+    setIsLoading(true);
+    const url = "https://fastapi-ian5.onrender.com/auth/users/tokens";
     const payload = new URLSearchParams();
-    payload.append('grant_type', 'password');
-    payload.append('username', username);
-    payload.append('password', password);
+    payload.append("grant_type", "password");
+    payload.append("username", username);
+    payload.append("password", password);
     fetch(url, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: payload
+      body: payload,
     })
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
-          throw new Error('Request failed with status ' + response.status);
+          setErrorMessage("Invalid Credentials");
+          setIsLoading(false);
+          throw new Error("Request failed with status " + response.status);
         }
         return response.json();
       })
-      .then(data => {
-        localStorage.setItem('token', data.access_token);
-        window.location.href = '/notes';
+      .then((data) => {
+        setIsLoading(false);
+        localStorage.setItem("token", data.access_token);
+        window.location.href = "/notes";
         console.log(data);
       })
-      .catch(error => {
+      .catch((error) => {
+        setIsLoading(false);
+        setErrorMessage("Invalid Credentials");
         console.error(error);
       });
   };
@@ -51,12 +60,12 @@ const LoginForm = (props) => {
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Username"
+            placeholder="Email"
             value={username}
             onChange={handleUsernameChange}
             className=""
           />
-          <br/>
+          <br />
           <input
             type="password"
             placeholder="Password"
@@ -64,11 +73,31 @@ const LoginForm = (props) => {
             onChange={handlePasswordChange}
             className=""
           />
-          <button type="submit">Login</button>
-          <p>Don't have an account? <a onClick={props.toggleForm}> Create account</a></p>
+          {isLoading ? (
+            <div style={{ padding: 10 }}>
+              <Hourglass
+                visible={true}
+                height="50"
+                width="50"
+                ariaLabel="hourglass-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                colors={["#306cce", "#72a1ed"]}
+              />
+            </div>
+          ) : (
+            <button type="submit">Login</button>
+          )}
         </form>
-        <a></a>
+        {errorMessage && <p>{errorMessage}</p>}
       </div>
+      <p>
+        Don't have an account? <br />
+        <a onClick={props.toggleForm} className={classes.accountAction}>
+          {" "}
+          Create account
+        </a>
+      </p>
     </div>
   );
 };
